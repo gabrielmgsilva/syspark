@@ -12,7 +12,7 @@ CREATE TABLE tbl_garagem
     CONSTRAINT pk_tbl_garagem PRIMARY KEY (id)
 );
 
-CREATE TABLE tbl_setor
+CREATE TABLE tbl_vaga
 (
     id                    BIGINT AUTO_INCREMENT NOT NULL,
     dt_criacao            datetime       NOT NULL,
@@ -20,12 +20,12 @@ CREATE TABLE tbl_setor
     latitude              DECIMAL(10, 6) NOT NULL,
     longitude             DECIMAL(10, 6) NOT NULL,
     garagem_id            BIGINT         NOT NULL,
-    CONSTRAINT pk_tbl_setor PRIMARY KEY (id)
+    CONSTRAINT pk_tbl_vaga PRIMARY KEY (id)
 );
 
-CREATE UNIQUE INDEX idx_garagem_setor ON tbl_garagem (setor);
+CREATE UNIQUE INDEX idx_garagem_vaga ON tbl_garagem (id);
 
-CREATE UNIQUE INDEX idx_localizacao_vaga ON tbl_setor (latitude, longitude);
+CREATE UNIQUE INDEX idx_localizacao_vaga ON tbl_vaga (latitude, longitude);
 
-ALTER TABLE tbl_setor
-    ADD CONSTRAINT FK_TBL_SETOR_ON_GARAGEM FOREIGN KEY (garagem_id) REFERENCES tbl_garagem (id);
+ALTER TABLE tbl_vaga
+    ADD CONSTRAINT FK_TBL_VAGA_ON_GARAGEM FOREIGN KEY (garagem_id) REFERENCES tbl_garagem (id);

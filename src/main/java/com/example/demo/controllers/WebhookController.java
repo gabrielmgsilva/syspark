@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.records.EventoGaragemRecord;
+import com.example.demo.records.StatusEventoRecord;
 import com.example.demo.services.GaragemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,7 @@ public class WebhookController {
     }
 
     @PostMapping
-    public ResponseEntity<?> eventoGaragem(@RequestBody EventoGaragemRecord evento) {
+    public ResponseEntity<StatusEventoRecord> eventoGaragem(@RequestBody EventoGaragemRecord evento) {
         log.info(evento.toString());
         return ResponseEntity.ok().body(garagemService.eventoGaragem(evento));
     }

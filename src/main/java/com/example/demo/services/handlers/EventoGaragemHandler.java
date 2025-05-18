@@ -1,8 +1,9 @@
 package com.example.demo.services.handlers;
 
 import com.example.demo.records.EventoGaragemRecord;
+import com.example.demo.records.StatusEventoRecord;
 
 public interface EventoGaragemHandler {
 
-    void handle(EventoGaragemRecord eventoGaragem);
+    StatusEventoRecord handle(EventoGaragemRecord eventoGaragem);
 }

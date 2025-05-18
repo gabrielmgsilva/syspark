@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.records.EventoGaragemRecord;
+import com.example.demo.records.StatusEventoRecord;
 import com.example.demo.services.handlers.EventoGaragemHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +20,14 @@ public class GaragemService {
         this.handlers = handlers;
     }
 
-    public String eventoGaragem(EventoGaragemRecord evento) {
-        log.info(evento.toString());
+    public StatusEventoRecord eventoGaragem(EventoGaragemRecord evento) {
+        EventoGaragemHandler handler = handlers.get(evento.tipoEvento());
 
-        return "Evento recebido com sucesso";
+        if (handler != null) {
+           return handler.handle(evento);
+        } else {
+            log.warn("Handler não encontrado para o evento: " + evento.tipoEvento());
+            throw new IllegalArgumentException("Tipo de evento desconhecido: " + evento.tipoEvento());
+        }
     }
 }
