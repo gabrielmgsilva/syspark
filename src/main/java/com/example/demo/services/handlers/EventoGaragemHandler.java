@@ -5,5 +5,5 @@ import com.example.demo.records.StatusEventoRecord;
 
 public interface EventoGaragemHandler {
 
-    StatusEventoRecord handle(EventoGaragemRecord eventoGaragem);
+    StatusEventoRecord handle(EventoGaragemRecord evento);
 }

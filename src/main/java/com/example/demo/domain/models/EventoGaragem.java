@@ -6,8 +6,6 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @EqualsAndHashCode
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity(name = "EntidadeEventoGaragem")
 @Table(name = "tbl_evento_garagem")
 public class EventoGaragem {
@@ -42,9 +40,17 @@ public class EventoGaragem {
         dtUltimaModificacao = LocalDateTime.now();
     }
 
+    public EventoGaragem() {}
+
     public EventoGaragem(String placa, String tipoEvento) {
         this.placa = placa;
         this.tipoEvento = tipoEvento;
+    }
+
+    public EventoGaragem(String placa, String tipoEvento, Vaga vaga) {
+        this.placa = placa;
+        this.tipoEvento = tipoEvento;
+        this.vaga = vaga;
     }
 
     public Long getId() {
