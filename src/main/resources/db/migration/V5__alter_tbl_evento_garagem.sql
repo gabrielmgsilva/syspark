@@ -1,0 +1,1 @@
+ALTER TABLE tbl_evento_garagem ADD COLUMN taxa DOUBLE NOT NULL;

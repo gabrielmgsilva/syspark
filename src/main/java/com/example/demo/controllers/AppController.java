@@ -1,12 +1,13 @@
 package com.example.demo.controllers;
 
-import com.example.demo.records.EventoGaragemRecord;
-import com.example.demo.records.StatusEventoRecord;
+import com.example.demo.records.*;
 import com.example.demo.services.GaragemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 
@@ -28,26 +29,22 @@ public class AppController {
     }
 
     @GetMapping("/garage")
-    public ResponseEntity<String> garage() {
-        //TODO: Implement garage logic
-        return ResponseEntity.ok("Garage is open");
+    public ResponseEntity<List<GaragemResponseRecord>> garagem() {
+        return ResponseEntity.ok(this.garagemService.configGaragem());
     }
 
     @PostMapping("/plate-status")
-    public ResponseEntity<String> plateStatus() {
-        //TODO: Implement plate status logic
-        return ResponseEntity.ok("Plate status is OK");
+    public ResponseEntity<StatusPlacaResponseRecord> plateStatus(@RequestBody PlacaRequestRecord placa) {
+        return ResponseEntity.ok(this.garagemService.plateStatus(placa));
     }
 
     @PostMapping("spot-status")
-    public ResponseEntity<String> spotStatus() {
-        //TODO: Implement spot status logic
-        return ResponseEntity.ok("Spot status is OK");
+    public ResponseEntity<StatusVagaResponseRecord> spotStatus(@RequestBody StatusVagaRequestRecord vaga) {
+        return ResponseEntity.ok(this.garagemService.spotStatus(vaga));
     }
 
     @GetMapping("/revenue")
-    public ResponseEntity<String> revenue() {
-        //TODO: Implement revenue logic
-        return ResponseEntity.ok("Revenue is OK");
+    public ResponseEntity<ReceitaResponseRecord> revenue(@RequestBody ReceitaRequestRecord receita) {
+        return ResponseEntity.ok(this.garagemService.receitaGaragem(receita));
     }
 }

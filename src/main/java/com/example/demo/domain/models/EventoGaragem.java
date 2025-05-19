@@ -20,6 +20,9 @@ public class EventoGaragem {
     @Column(name = "tipo_evento", nullable = false, length = 20)
     private String tipoEvento;
 
+    @Column(name = "taxa", nullable = false)
+    private Double taxa;
+
     @JoinColumn(name = "vaga_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Vaga vaga;
@@ -53,6 +56,13 @@ public class EventoGaragem {
         this.vaga = vaga;
     }
 
+    public EventoGaragem(String placa, String tipoEvento, Vaga vaga, double taxa) {
+        this.placa = placa;
+        this.tipoEvento = tipoEvento;
+        this.vaga = vaga;
+        this.taxa = taxa;
+    }
+
     public Long getId() {
         return id;
     }
@@ -83,6 +93,14 @@ public class EventoGaragem {
 
     public void setVaga(Vaga vaga) {
         this.vaga = vaga;
+    }
+
+    public Double getTaxa() {
+        return taxa;
+    }
+
+    public void setTaxa(Double taxa) {
+        this.taxa = taxa;
     }
 
     public LocalDateTime getDtCriacao() {
