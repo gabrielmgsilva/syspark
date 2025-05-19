@@ -68,7 +68,7 @@ Este projeto é uma API desenvolvida em **Java** utilizando o framework **Spring
 
 2. Acesse a documentação Swagger em:
    ```
-   http://localhost:8080/swagger-ui.html
+   http://localhost:3003/swagger-ui.html
    ```
 
 ## Estrutura do Projeto
